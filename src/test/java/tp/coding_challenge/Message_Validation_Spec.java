@@ -17,8 +17,8 @@ import static org.mockito.MockitoAnnotations.initMocks;
 @RunWith(Theories.class)
 public class Message_Validation_Spec
 {
-	@Mock Constraint satisfied_subconstraint, unsatisfied_subconstraint ;
-    @Mock Message message  ;
+	@Mock Constraint satisfied_subconstraint, unsatisfied_subconstraint;
+    @Mock Message message;
 
 	@DataPoints public static int[] values = { -1, 0, 1, 99, 100, 255, 256 };
 

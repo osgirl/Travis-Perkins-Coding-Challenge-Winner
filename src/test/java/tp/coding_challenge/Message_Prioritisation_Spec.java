@@ -10,7 +10,7 @@ public class Message_Prioritisation_Spec
 {
 	Instruction_Queue queue = new Instruction_Queue(Constraint.NONE, Prioritisation.by_instruction_type);
 
-	Message high_message = new Message(),  medium_message = new Message(), low_message = new Message();
+	Message high_message = new Message(), medium_message = new Message(), low_message = new Message();
 
 	@Before public void DEFINITIONS()
 	{
