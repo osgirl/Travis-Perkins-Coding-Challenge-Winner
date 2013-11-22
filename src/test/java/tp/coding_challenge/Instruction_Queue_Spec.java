@@ -20,18 +20,18 @@ public class Instruction_Queue_Spec
     @Mock Message message;
     Exception rejection;
 
-    @Test
-    public void adds_valid_message()
-    {
-        assertThat(queue.add(message).next_message(), is(message));
-    }
-
     @Before
     public void DEFINITIONS()
     {
         initMocks(this);
         queue = new Instruction_Queue(constraint, mock(Comparator.class));
         given(constraint.is_satisfied_by(message)).willReturn(true);
+    }
+
+    @Test
+    public void adds_valid_message()
+    {
+        assertThat(queue.add(message).next_message(), is(message));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class Instruction_Queue_Spec
     {
         given(constraint.is_satisfied_by(message)).willReturn(false);
 
-        WHEN:try
+        WHEN: try
         {
             queue.add(message);
         }
