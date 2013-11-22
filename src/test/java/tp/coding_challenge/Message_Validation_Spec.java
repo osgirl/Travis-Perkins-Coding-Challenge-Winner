@@ -18,23 +18,23 @@ import static org.mockito.MockitoAnnotations.initMocks;
 public class Message_Validation_Spec
 {
 	@Mock Constraint satisfied_subconstraint, unsatisfied_subconstraint;
-    @Mock Message message;
+	@Mock Message message;
 
 	@DataPoints public static int[] values = { -1, 0, 1, 99, 100, 255, 256 };
 
-    @Before public void DEFINITIONS()
-    {
-        initMocks(this);
-        given(satisfied_subconstraint.is_satisfied_by(message)).willReturn(true);
-    }
+	@Before public void DEFINITIONS()
+	{
+		initMocks(this);
+		given(satisfied_subconstraint.is_satisfied_by(message)).willReturn(true);
+	}
 
-    @Test public void ands_subconstraints()
-    {
-        assertThat(Constraint.from(satisfied_subconstraint, satisfied_subconstraint).is_satisfied_by(message), is(true));
-        assertThat(Constraint.from(unsatisfied_subconstraint, satisfied_subconstraint).is_satisfied_by(message), is(false));
-        assertThat(Constraint.from(satisfied_subconstraint, unsatisfied_subconstraint).is_satisfied_by(message), is(false));
-        assertThat(Constraint.from(unsatisfied_subconstraint, unsatisfied_subconstraint).is_satisfied_by(message), is(false));
-    }
+	@Test public void ands_subconstraints()
+	{
+		assertThat(Constraint.from(satisfied_subconstraint, satisfied_subconstraint).is_satisfied_by(message), is(true));
+		assertThat(Constraint.from(unsatisfied_subconstraint, satisfied_subconstraint).is_satisfied_by(message), is(false));
+		assertThat(Constraint.from(satisfied_subconstraint, unsatisfied_subconstraint).is_satisfied_by(message), is(false));
+		assertThat(Constraint.from(unsatisfied_subconstraint, unsatisfied_subconstraint).is_satisfied_by(message), is(false));
+	}
 
 	@Theory public void accepts_valid_instruction_type(final int value)
 	{
